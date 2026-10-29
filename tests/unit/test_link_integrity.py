@@ -49,9 +49,9 @@ def extract_headers(content: str) -> Set[str]:
 
 def test_heading_slug_keeps_one_hyphen_per_space() -> None:
   """Verifies removed punctuation leaves a double hyphen, as on GitHub."""
-  assert extract_headers("## Contribution Tracks & Workflow\n") == {
-      "contribution-tracks--workflow"
-  }
+  assert extract_headers(
+      "## Contribution Tracks & Workflow\n## Design Principles\n"
+  ) == {"contribution-tracks--workflow", "design-principles"}
 
 
 def test_relative_markdown_links_resolve_on_disk(
